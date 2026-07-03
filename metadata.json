@@ -1,0 +1,6 @@
+{
+  "name": "Evomk",
+  "description": "Download safe and original APK files for Android apps and games. Fast, free and secure APK downloads directly to your device.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
