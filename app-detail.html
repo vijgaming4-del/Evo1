@@ -1,6 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script>
+        // Global fix for "Cannot set property fetch of #<Window> which has only a getter"
+        (function() {
+            try {
+                const descriptor = Object.getOwnPropertyDescriptor(window, 'fetch');
+                if (descriptor && descriptor.configurable && (descriptor.get || !descriptor.writable)) {
+                    const originalFetch = window.fetch;
+                    Object.defineProperty(window, 'fetch', {
+                        value: originalFetch,
+                        writable: true,
+                        configurable: true,
+                        enumerable: true
+                    });
+                }
+            } catch (e) {}
+        })();
+    </script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3650340203637541"
      crossorigin="anonymous"></script>
     <meta charset="UTF-8">
@@ -16,6 +33,7 @@
     <script type="application/ld+json" id="appSchema"></script>
     <script type="application/ld+json" id="breadcrumbSchema"></script>
     <script type="application/ld+json" id="faqSchema"></script>
+    <script src="/js/data.js"></script>
 </head>
 <body class="loading">
     <div id="page-loader">
@@ -325,9 +343,11 @@
         </a>
     </div>
 
-    <script src="/js/main.js"></script>
-    <script src="/js/search.js"></script>
-    <script>
+    
+    <script type="module" src="/js/main.js"></script>
+    <script type="module" src="/js/search.js"></script>
+    <script type="module">
+
         document.addEventListener('DOMContentLoaded', async () => {
             const urlParams = new URLSearchParams(window.location.search);
             const id = urlParams.get('id');
@@ -338,11 +358,7 @@
             }
 
             try {
-                const response = await fetch('/data/apps.json');
-                if (!response.ok) {
-                    throw new Error(`Failed to load apps: ${response.status} ${response.statusText}`);
-                }
-                const apps = await response.json();
+                const apps = window.APP_DATA || [];
                 const app = apps.find(a => a.id === id);
 
                 if (!app) {

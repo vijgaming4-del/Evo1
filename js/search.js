@@ -1,12 +1,5 @@
 "use strict";
 
-// Prevent potential fetch property assignment errors
-try {
-    if (window.fetch && !Object.getOwnPropertyDescriptor(window, 'fetch').writable) {
-        // fetch is a getter and not writable, which is expected
-    }
-} catch (e) {}
-
 /**
  * Search functionality for Evomk
  */

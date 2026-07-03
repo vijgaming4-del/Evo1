@@ -1,6 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script>
+        // Global fix for "Cannot set property fetch of #<Window> which has only a getter"
+        (function() {
+            try {
+                const descriptor = Object.getOwnPropertyDescriptor(window, 'fetch');
+                if (descriptor && descriptor.configurable && (descriptor.get || !descriptor.writable)) {
+                    const originalFetch = window.fetch;
+                    Object.defineProperty(window, 'fetch', {
+                        value: originalFetch,
+                        writable: true,
+                        configurable: true,
+                        enumerable: true
+                    });
+                }
+            } catch (e) {}
+        })();
+    </script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3650340203637541"
      crossorigin="anonymous"></script>
     <meta charset="UTF-8">
@@ -138,11 +155,11 @@
                 </div>
 
                 <div class="app-list-grid" id="gamesGrid">
-                    <!-- Static App Item: VIP PROXY FF -->
+                    <!-- VIP PROXY FF -->
                     <div class="app-card">
-                        <a href="/app-detail.html?id=vip-proxy-ff">
+                        <a href="/apps/vip-proxy-ff.html">
                             <div class="app-icon-wrapper">
-                                <img src="https://play-lh.googleusercontent.com/yS_L78H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H" alt="VIP PROXY FF" class="app-icon" loading="lazy">
+                                <img src="/assets/vip.png" alt="VIP PROXY FF" class="app-icon" loading="lazy">
                             </div>
                             <div class="app-info">
                                 <h3 class="app-title">VIP PROXY FF</h3>
@@ -154,7 +171,7 @@
                             </div>
                         </a>
                     </div>
-                    <!-- Static App Item: Subway Surfers -->
+                    <!-- Subway Surfers -->
                     <div class="app-card">
                         <a href="/app-detail.html?id=subway-surfers">
                             <div class="app-icon-wrapper">
@@ -166,6 +183,102 @@
                                 <div class="app-meta">
                                     <span class="app-rating">★ 4.6</span>
                                     <span class="app-size">156 MB</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- PUBG MOBILE -->
+                    <div class="app-card">
+                        <a href="/app-detail.html?id=pubg-mobile">
+                            <div class="app-icon-wrapper">
+                                <img src="https://play-lh.googleusercontent.com/9O-L78H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H" alt="PUBG MOBILE" class="app-icon" loading="lazy">
+                            </div>
+                            <div class="app-info">
+                                <h3 class="app-title">PUBG MOBILE</h3>
+                                <p class="app-category">Action</p>
+                                <div class="app-meta">
+                                    <span class="app-rating">★ 4.5</span>
+                                    <span class="app-size">1.2 GB</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- Candy Crush -->
+                    <div class="app-card">
+                        <a href="/app-detail.html?id=candy-crush">
+                            <div class="app-icon-wrapper">
+                                <img src="https://play-lh.googleusercontent.com/7-L78H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H" alt="Candy Crush" class="app-icon" loading="lazy">
+                            </div>
+                            <div class="app-info">
+                                <h3 class="app-title">Candy Crush Saga</h3>
+                                <p class="app-category">Casual</p>
+                                <div class="app-meta">
+                                    <span class="app-rating">★ 4.6</span>
+                                    <span class="app-size">85 MB</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- Minecraft -->
+                    <div class="app-card">
+                        <a href="/app-detail.html?id=minecraft">
+                            <div class="app-icon-wrapper">
+                                <img src="https://play-lh.googleusercontent.com/VSW_L78H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H" alt="Minecraft" class="app-icon" loading="lazy">
+                            </div>
+                            <div class="app-info">
+                                <h3 class="app-title">Minecraft</h3>
+                                <p class="app-category">Arcade</p>
+                                <div class="app-meta">
+                                    <span class="app-rating">★ 4.7</span>
+                                    <span class="app-size">650 MB</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- Roblox -->
+                    <div class="app-card">
+                        <a href="/app-detail.html?id=roblox">
+                            <div class="app-icon-wrapper">
+                                <img src="https://play-lh.googleusercontent.com/9-L78H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H" alt="Roblox" class="app-icon" loading="lazy">
+                            </div>
+                            <div class="app-info">
+                                <h3 class="app-title">Roblox</h3>
+                                <p class="app-category">Adventure</p>
+                                <div class="app-meta">
+                                    <span class="app-rating">★ 4.4</span>
+                                    <span class="app-size">160 MB</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- Free Fire -->
+                    <div class="app-card">
+                        <a href="/app-detail.html?id=free-fire">
+                            <div class="app-icon-wrapper">
+                                <img src="https://play-lh.googleusercontent.com/ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff" alt="Free Fire" class="app-icon" loading="lazy">
+                            </div>
+                            <div class="app-info">
+                                <h3 class="app-title">Free Fire</h3>
+                                <p class="app-category">Action</p>
+                                <div class="app-meta">
+                                    <span class="app-rating">★ 4.1</span>
+                                    <span class="app-size">450 MB</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- Among Us -->
+                    <div class="app-card">
+                        <a href="/app-detail.html?id=among-us">
+                            <div class="app-icon-wrapper">
+                                <img src="https://play-lh.googleusercontent.com/auauauauauauauauauauauauauauauauauauauauauauauauauauauauauauauau" alt="Among Us" class="app-icon" loading="lazy">
+                            </div>
+                            <div class="app-info">
+                                <h3 class="app-title">Among Us</h3>
+                                <p class="app-category">Action</p>
+                                <div class="app-meta">
+                                    <span class="app-rating">★ 3.7</span>
+                                    <span class="app-size">130 MB</span>
                                 </div>
                             </div>
                         </a>
