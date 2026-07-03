@@ -10,11 +10,7 @@ const RECENT_SEARCHES_KEY = 'evomk_recent_searches';
 async function initSearch() {
     // Load apps data
     try {
-        const response = await fetch('/data/apps.json');
-        if (!response.ok) {
-            throw new Error(`Failed to load apps: ${response.status} ${response.statusText}`);
-        }
-        allApps = await response.json();
+        allApps = window.APP_DATA || [];
     } catch (err) {
         console.error('Failed to load apps data:', err);
     }
@@ -148,11 +144,7 @@ async function initSearchResultsPage() {
     
     // Wait for apps to load if not already loaded
     if (allApps.length === 0) {
-        const response = await fetch('/data/apps.json');
-        if (!response.ok) {
-            throw new Error(`Failed to load apps: ${response.status} ${response.statusText}`);
-        }
-        allApps = await response.json();
+        allApps = window.APP_DATA || [];
     }
 
     renderRecentSearches();

@@ -54,11 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function initAppsPage() {
     try {
-        const response = await fetch('/data/apps.json');
-        if (!response.ok) {
-            throw new Error(`Failed to load apps: ${response.status} ${response.statusText}`);
-        }
-        let apps = await response.json();
+        const apps = window.APP_DATA || [];
         
         // Sort by date
         apps.sort((a, b) => new Date(b.updated) - new Date(a.updated));
@@ -85,11 +81,7 @@ async function initAppsPage() {
 
 async function initGamesPage() {
     try {
-        const response = await fetch('/data/apps.json');
-        if (!response.ok) {
-            throw new Error(`Failed to load apps: ${response.status} ${response.statusText}`);
-        }
-        let apps = await response.json();
+        const apps = window.APP_DATA || [];
         
         // Sort by date
         apps.sort((a, b) => new Date(b.updated) - new Date(a.updated));
@@ -311,11 +303,7 @@ function initHeader() {
 
 async function loadApps() {
     try {
-        const response = await fetch('/data/apps.json');
-        if (!response.ok) {
-            throw new Error(`Failed to load apps: ${response.status} ${response.statusText}`);
-        }
-        let apps = await response.json();
+        const apps = window.APP_DATA || [];
         
         // Sort by date (descending)
         apps.sort((a, b) => new Date(b.updated) - new Date(a.updated));
