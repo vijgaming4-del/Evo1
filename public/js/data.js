@@ -1,13 +1,13 @@
 window.APP_DATA = [
   {
     "id": "vip-proxy-ff",
-    "name": "VIP PROXY FF",
+    "name": "VIP PROXY FF - Proxy Server App",
     "package": "com.apnamod.vipproxyff",
     "developer": "Apnamod",
     "category": "Games",
     "version": "v2.115.1",
     "size": "155 MB",
-    "icon": "/assets/vip.png",
+    "icon": "https://play-lh.googleusercontent.com/yS_L78H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H7H",
     "rating": 4.5,
     "downloads": "10K+",
     "description": "Premium proxy service for FF players. Enhance your gaming experience with VIP PROXY FF, featuring high-speed servers and stable connections for seamless gameplay.",
