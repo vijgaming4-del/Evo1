@@ -16,7 +16,6 @@
     <script type="application/ld+json" id="appSchema"></script>
     <script type="application/ld+json" id="breadcrumbSchema"></script>
     <script type="application/ld+json" id="faqSchema"></script>
-    <script src="/js/data.js"></script>
 </head>
 <body class="loading">
     <div id="page-loader">
@@ -326,11 +325,9 @@
         </a>
     </div>
 
-    
-    <script type="module" src="/js/main.js"></script>
-    <script type="module" src="/js/search.js"></script>
-    <script type="module">
-
+    <script src="/js/main.js"></script>
+    <script src="/js/search.js"></script>
+    <script>
         document.addEventListener('DOMContentLoaded', async () => {
             const urlParams = new URLSearchParams(window.location.search);
             const id = urlParams.get('id');
@@ -341,7 +338,11 @@
             }
 
             try {
-                const apps = window.APP_DATA || [];
+                const response = await fetch('/data/apps.json');
+                if (!response.ok) {
+                    throw new Error(`Failed to load apps: ${response.status} ${response.statusText}`);
+                }
+                const apps = await response.json();
                 const app = apps.find(a => a.id === id);
 
                 if (!app) {
