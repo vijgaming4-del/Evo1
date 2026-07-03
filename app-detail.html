@@ -16,6 +16,7 @@
     <script type="application/ld+json" id="appSchema"></script>
     <script type="application/ld+json" id="breadcrumbSchema"></script>
     <script type="application/ld+json" id="faqSchema"></script>
+    <script src="/js/data.js"></script>
 </head>
 <body class="loading">
     <div id="page-loader">
@@ -325,10 +326,11 @@
         </a>
     </div>
 
-    <script src="/js/data.js"></script>
+    
     <script type="module" src="/js/main.js"></script>
     <script type="module" src="/js/search.js"></script>
-    <script>
+    <script type="module">
+
         document.addEventListener('DOMContentLoaded', async () => {
             const urlParams = new URLSearchParams(window.location.search);
             const id = urlParams.get('id');
