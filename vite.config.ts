@@ -1,5 +1,6 @@
 import {defineConfig} from 'vite';
 import path from 'path';
+import fs from 'fs';
 
 export default defineConfig(() => {
   return {
@@ -26,6 +27,14 @@ export default defineConfig(() => {
           features: path.resolve(__dirname, 'features.html'),
           faq: path.resolve(__dirname, 'faq.html'),
           detail: path.resolve(__dirname, 'app-detail.html'),
+          ...Object.fromEntries(
+            fs.readdirSync(path.resolve(__dirname, 'apps'))
+              .filter(file => file.endsWith('.html'))
+              .map(file => [
+                `apps/${file.replace('.html', '')}`,
+                path.resolve(__dirname, 'apps', file)
+              ])
+          )
         },
       },
     },

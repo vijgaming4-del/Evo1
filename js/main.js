@@ -114,7 +114,7 @@ function renderAppsToListGrid(apps, grid) {
                 <span class="category-badge">${app.category}</span>
                 <span>${app.size} | v${app.version}</span>
             </div>
-            <a href="/app-detail.html?id=${app.id}" class="btn-download-sm">Download APK</a>
+            <a href="/apps/${app.id}.html" class="btn-download-sm">Download APK</a>
         </div>
     `).join('');
 }
@@ -313,7 +313,7 @@ async function loadApps() {
         if (featuredGrid) {
             const featuredApps = apps.filter(app => app.featured);
             featuredGrid.innerHTML = featuredApps.map(app => `
-                <a href="/app-detail.html?id=${app.id}" class="featured-card">
+                <a href="/apps/${app.id}.html" class="featured-card">
                     <img src="${app.icon}" alt="${app.name}" loading="lazy" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2280%22%20height%3D%2280%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23eee%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20font-family%3D%22Arial%22%20font-size%3D%2212%22%20fill%3D%22%23aaa%22%20text-anchor%3D%22middle%22%20dy%3D%22.3em%22%3EAPK%3C%2Ftext%3E%3C%2Fsvg%3E'; this.onerror=null;" style="width: 80px; border-radius: 18px; margin-bottom: 12px;">
                     <h3 style="font-size: 15px; margin-bottom: 5px;">${app.name}</h3>
                     <p style="font-size: 12px; color: #666; margin-bottom: 10px;">${app.category}</p>
@@ -327,7 +327,7 @@ async function loadApps() {
         if (latestGrid) {
             const latestApps = apps.filter(app => !app.isGame).slice(0, 12);
             latestGrid.innerHTML = latestApps.map(app => `
-                <a href="/app-detail.html?id=${app.id}" class="app-card-long">
+                <a href="/apps/${app.id}.html" class="app-card-long">
                     <img src="${app.icon}" alt="${app.name}" loading="lazy" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23eee%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20font-family%3D%22Arial%22%20font-size%3D%2210%22%20fill%3D%22%23aaa%22%20text-anchor%3D%22middle%22%20dy%3D%22.3em%22%3EAPK%3C%2Ftext%3E%3C%2Fsvg%3E'; this.onerror=null;">
                     <div class="app-card-info">
                         <h3>${app.name}</h3>
@@ -346,7 +346,7 @@ async function loadApps() {
         if (gamesGrid) {
             const games = apps.filter(app => app.isGame).slice(0, 8);
             gamesGrid.innerHTML = games.map(app => `
-                <a href="/app-detail.html?id=${app.id}" class="featured-card">
+                <a href="/apps/${app.id}.html" class="featured-card">
                     <img src="${app.icon}" alt="${app.name}" loading="lazy" style="width: 80px; border-radius: 18px; margin-bottom: 12px;">
                     <h3>${app.name}</h3>
                     <p>${app.category}</p>
@@ -360,7 +360,7 @@ async function loadApps() {
         if (recentlyGrid) {
             const updatedApps = [...apps].sort((a, b) => 0.5 - Math.random()).slice(0, 4);
             recentlyGrid.innerHTML = updatedApps.map(app => `
-                <a href="/app-detail.html?id=${app.id}" class="app-card-long">
+                <a href="/apps/${app.id}.html" class="app-card-long">
                     <img src="${app.icon}" alt="${app.name}" loading="lazy" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23eee%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20font-family%3D%22Arial%22%20font-size%3D%2210%22%20fill%3D%22%23aaa%22%20text-anchor%3D%22middle%22%20dy%3D%22.3em%22%3EAPK%3C%2Ftext%3E%3C%2Fsvg%3E'; this.onerror=null;">
                     <div class="app-card-info">
                         <h3>${app.name}</h3>
@@ -378,7 +378,7 @@ async function loadApps() {
 
 function renderApps(apps, container) {
     container.innerHTML = apps.map(app => `
-        <a href="/app-detail.html?id=${app.id}" class="app-card" id="app-${app.id}">
+        <a href="/apps/${app.id}.html" class="app-card" id="app-${app.id}">
             <img src="${app.icon}" alt="${app.name}" loading="lazy" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2280%22%20height%3D%2280%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23eee%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20font-family%3D%22Arial%22%20font-size%3D%2212%22%20fill%3D%22%23aaa%22%20text-anchor%3D%22middle%22%20dy%3D%22.3em%22%3EAPK%3C%2Ftext%3E%3C%2Fsvg%3E'; this.onerror=null;">
             <h3>${app.name}</h3>
             <p>${app.category}</p>
